@@ -72,7 +72,10 @@ install_zephyr_sdk() {
         echo "❌ Expected directory zephyr-sdk-$ZSDK_VERSION not found after extract"
         exit 1
     fi
-    mv -f "zephyr-sdk-$ZSDK_VERSION" "$ZEPHYR_SDK_INSTALL_DIR"
+    # Only move if the destination is different from the source directory name
+    if [ "zephyr-sdk-$ZSDK_VERSION" != "$(basename "$ZEPHYR_SDK_INSTALL_DIR")" ]; then
+        mv -f "zephyr-sdk-$ZSDK_VERSION" "$ZEPHYR_SDK_INSTALL_DIR"
+    fi
 
     echo "⚙️  Running Zephyr SDK setup (non-interactive)"
     cd "$ZEPHYR_SDK_INSTALL_DIR"

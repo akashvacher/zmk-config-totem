@@ -46,9 +46,7 @@ ensure_venv() {
 
 west_setup() {
     echo "🌲 Initializing west workspace"
-    if [ ! -d "$REPO_ROOT/zmk" ]; then
-        west init -l "$REPO_ROOT/config"
-    fi
+    west init -l config/
     west update
     echo "🐍 Installing Zephyr Python requirements"
     pip install -r "$REPO_ROOT/zephyr/scripts/requirements.txt"

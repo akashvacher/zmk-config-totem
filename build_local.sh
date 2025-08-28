@@ -52,7 +52,7 @@ fi
 
 # Create output directory
 mkdir -p output
-rm -f output/*.uf2 output/*.zip  # Clean previous builds
+rm -rf output/*  # Clean previously produced files
 
 # Board and config settings
 BOARD="seeeduino_xiao_ble"
